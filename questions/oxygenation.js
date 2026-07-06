@@ -241,7 +241,7 @@ const oxygenationQuestions = [
     question: "Which postoperative action helps reduce risk for venous thromboembolism?",
     choices: ["Early ambulation as prescribed", "Keeping the patient immobile", "Restricting all fluids without order", "Avoiding leg exercises"],
     answer: "Early ambulation as prescribed",
-    rationale: "Early ambulation improves venous return and reduces risk for clot formation."
+    rationale: "Early ambulation improves venous return and reduces risk for clot formation. "
   },
   {
     caseId: "OX-005",
