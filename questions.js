@@ -1,23 +1,66 @@
 const questions = [
   {
+    caseId: "FE-001",
+    patient: "Mrs. Linda Johnson",
     topic: "Fluids & Electrolytes",
-    question: "A 74-year-old patient with chronic kidney disease reports weakness and palpitations. ECG shows peaked T waves and widened QRS complexes. Which condition is most likely?",
-    choices: ["Hypokalemia", "Hyperkalemia", "Hyponatremia", "Hypocalcemia"],
+    style: "Recognition",
+    difficulty: "ATI",
+    question: "Mrs. Johnson is a 74-year-old patient with CHF receiving IV furosemide. She reports leg cramps, weakness, and palpitations. Telemetry shows flattened T waves and U waves. Which condition is most likely?",
+    choices: [
+      "Hyperkalemia",
+      "Hypokalemia",
+      "Hyponatremia",
+      "Hypercalcemia"
+    ],
+    answer: "Hypokalemia",
+    rationale: "Furosemide can cause potassium loss. Hypokalemia causes muscle weakness, cramps, flattened T waves, and U waves."
+  },
+  {
+    caseId: "FE-001",
+    patient: "Mrs. Linda Johnson",
+    topic: "Fluids & Electrolytes",
+    style: "Safety",
+    difficulty: "ATI",
+    question: "The provider orders potassium chloride IV push for Mrs. Johnson. What should the nurse do?",
+    choices: [
+      "Administer the medication as ordered",
+      "Question the order",
+      "Dilute it with sterile water and give rapidly",
+      "Give it through the closest IV port"
+    ],
+    answer: "Question the order",
+    rationale: "IV potassium is high-alert and is never given IV push. It must be diluted and infused using a pump."
+  },
+  {
+    caseId: "FE-002",
+    patient: "Mr. Robert Carter",
+    topic: "Fluids & Electrolytes",
+    style: "Recognition",
+    difficulty: "ATI",
+    question: "Mr. Carter has chronic kidney disease and reports weakness and palpitations. His ECG shows peaked T waves and widened QRS complexes. Which condition is most likely?",
+    choices: [
+      "Hypokalemia",
+      "Hyperkalemia",
+      "Hypocalcemia",
+      "Hyponatremia"
+    ],
     answer: "Hyperkalemia",
-    rationale: "Chronic kidney disease can prevent potassium excretion. Hyperkalemia causes weakness, peaked T waves, widened QRS complexes, and dangerous dysrhythmias."
+    rationale: "Kidney disease can prevent potassium excretion. Hyperkalemia causes peaked T waves, widened QRS complexes, weakness, and dangerous dysrhythmias."
   },
   {
+    caseId: "FE-002",
+    patient: "Mr. Robert Carter",
     topic: "Fluids & Electrolytes",
-    question: "A patient had a thyroidectomy this morning. Two hours later, the patient reports tingling around the mouth and fingertips. The hand spasms when the blood pressure cuff inflates. Which condition is most likely?",
-    choices: ["Hypercalcemia", "Hypocalcemia", "Hypernatremia", "Hypomagnesemia"],
-    answer: "Hypocalcemia",
-    rationale: "After thyroidectomy, parathyroid damage can cause hypocalcemia. Tingling, numbness, Trousseau's sign, and Chvostek's sign are classic findings."
-  },
-  {
-    topic: "Oxygenation",
-    question: "A patient with pneumonia becomes restless and confused. Respirations are 30/min and oxygen saturation is 84%. Which problem is most likely?",
-    choices: ["Hypoxia", "Hypercalcemia", "Fluid overload only", "Hypokalemia"],
-    answer: "Hypoxia",
-    rationale: "Restlessness, confusion, tachypnea, and low oxygen saturation are signs of hypoxia."
+    style: "Priority",
+    difficulty: "ATI",
+    question: "Mr. Carter's potassium is 6.9 mEq/L with peaked T waves. Which medication should the nurse anticipate FIRST?",
+    choices: [
+      "Sodium polystyrene sulfonate",
+      "IV calcium gluconate",
+      "Oral potassium chloride",
+      "0.45% normal saline"
+    ],
+    answer: "IV calcium gluconate",
+    rationale: "IV calcium gluconate is given first to stabilize the cardiac membrane. It does not lower potassium, but it protects the heart immediately."
   }
 ];
