@@ -1,19 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="style.css">
   <title>NUR 113 Question Bank</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<header>
   <h1>🩺 NUR 113 Clinical Question Bank</h1>
   <p>Practice patient-scenario questions for nursing school.</p>
+</header>
 
-  <h2>Choose a topic</h2>
+<div class="container">
+  <div class="card" id="home">
+    <h2>Choose a topic</h2>
+    <button onclick="startQuiz('Oxygenation')">Oxygenation</button>
+    <button onclick="startQuiz('Fluids & Electrolytes')">Fluids & Electrolytes</button>
+  </div>
 
-  <button>Oxygenation</button>
-  <button>Fluids & Electrolytes</button>
+  <div class="card" id="quiz" style="display:none;">
+    <p id="topic"></p>
+    <h2 id="question"></h2>
+    <div id="choices"></div>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
 
-  <h2>Quiz Mode</h2>
-  <button>Start Quiz</button>
+  <div class="card" id="result" style="display:none;">
+    <h2>Quiz Complete</h2>
+    <p id="score"></p>
+    <div id="review"></div>
+    <button onclick="location.reload()">Start Over</button>
+  </div>
+</div>
+
+<script src="questions.js"></script>
+<script>
+let quizQuestions = [];
+let currentQuestion = 0;
+let score = 0;
+let userAnswers = [];
+
+function startQuiz(topic) {
+  quizQuestions = questions.filter(q => q.topic === topic);
+  currentQuestion = 0;
+  score = 0;
+  userAnswers = [];
+
+  document.getElementById("home").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = quizQuestions[currentQuestion];
+
+  document.getElementById("topic").innerText = q.topic;
+  document.getElementById("question").innerText = q.question;
+
+  const choicesDiv = document.getElementById("choices");
+  choicesDiv.innerHTML = "";
+
+  q.choices.forEach(choice => {
+    choicesDiv.innerHTML += `
+      <label>
+        <input type="radio" name="answer" value="${choice}">
+        ${choice}
+      </label><br><br>
+    `;
+  });
+}
+
+function nextQuestion() {
+  const selected = document.querySelector('input[name="answer"]:checked');
+
+  if (!selected) {
+    alert("Please choose an answer first.");
+    return;
+  }
+
+  const q = quizQuestions[currentQuestion];
+  userAnswers.push(selected.value);
+
+  if (selected.value === q.answer) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < quizQuestions.length) {
+    showQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("score").innerText =
+    `You scored ${score} out of ${quizQuestions.length}`;
+
+  const reviewDiv = document.getElementById("review");
+  reviewDiv.innerHTML = "";
+
+  quizQuestions.forEach((q, index) => {
+    reviewDiv.innerHTML += `
+      <hr>
+      <h3>Question ${index + 1}</h3>
+      <p>${q.question}</p>
+      <p><strong>Your answer:</strong> ${userAnswers[index]}</p>
+      <p><strong>Correct answer:</strong> ${q.answer}</p>
+      <p><strong>Rationale:</strong> ${q.rationale}</p>
+    `;
+  });
+}
+</script>
+
 </body>
 </html>
